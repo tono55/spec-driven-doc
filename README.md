@@ -386,6 +386,17 @@ Kiro は AWS が提供する **Agentic IDE** です（Code OSS ベースの独�
 - **Kiro を選ぶ**: AWS エコシステム中心のチーム。GUI での進捗可視化や承認フローを重視する。Agent Hooks による自動化（保存時テスト・ドキュメント同期）に魅力を感じる。SDD 未経験メンバーが多くオンボーディングを優先したい
 - **共通の注意**: どちらも小さなタスクには過剰です（§4.2）。また生成物はどちらも Markdown なので、spec ↔ requirements の相互移行は比較的容易であり、「まず Spec-kit で試して、チームが SDD に馴染んだら IDE ごと Kiro を検討する」（またはその逆）という段階的な選択も現実的です
 
+### 8.5 AI-DLC — Kiro の背後にある AWS の方法論
+
+Kiro がツールなら、その背後で AWS が推す**方法論**が **AI-DLC（AI-Driven Development Lifecycle）**です（2025年に AWS DevOps ブログで提唱）。SDD がファイル規約とワークフローの発明だとすれば、AI-DLC は**開発ライフサイクルと組織の儀式ごと AI 前提に再設計する**試みで、レイヤが一段上です。
+
+- **中核原則は「AI proposes, human approves」**: AI が計画・設計・コードを提案し、人間は要所で検証・承認する。すべての人間の判断と承認が記録される。——本ドキュメントの言葉でいえば、§11 のハーネスの中核原則（検証ループとゲート）を、ツール設定ではなく**組織プロセスとして**制度化したもの
+- **3フェーズ**: Inception（**Mob Elaboration**: 開発者・PM・BA・QA が AI とモブ形式で要求を精錬し、ユーザーストーリーと作業単位に分解）→ Construction（**Mob Construction**: 設計・コード・テスト）→ Operations（デプロイ・運用）。Mob Elaboration は §15.1 の PBI リファインメントを「チーム全員＋AI の集中セッション」で行うことに相当する
+- **時間単位の再定義**: スプリント（週単位）は **Bolt**（時間〜日単位）に、エピックは **Unit of Work** に置き換わる。生成が速くなった分、反復の単位も短くする——§7.6 で見た「粒度の再設計」のプロセス版
+- **実装は OSS で配布**: 2025年11月に [awslabs/aidlc-workflows](https://github.com/awslabs/aidlc-workflows)（MIT-0）として公開され、実体は **Kiro の steering ファイルと Amazon Q のルール集**。方法論が「ハーネス成果物のパッケージ」として配布される、§11.3 で述べた構図（SDD ツール＝ハーネスの既製品）のプロセス版といえる
+
+位置付けを整理すると: **Spec-kit / Kiro はツール、SDD は開発手法、AI-DLC はライフサイクル全体の方法論**（SDD 的な仕様ワークフローを Inception〜Construction の一部として包含する）。Kiro を採用するチームが「ツールは入れたが、チームの回し方をどう変えるか」に踏み込むときの参照枠であり、逆に Spec-kit 派のチームでも Mob Elaboration（仕様レビューをモブでやる）や Bolt（反復単位の短縮）は単体で輸入できるプラクティスです。
+
 ## 9. コンテキストエンジニアリングの基礎と応用
 
 SDD がなぜ効くのか、なぜ「仕様をファイルに書く」だけでエージェントの品質が変わるのかは、**コンテキストエンジニアリング**の基礎を押さえると原理から理解できます。Spec-kit と Kiro の設計判断は、ほぼすべてここに根拠があります。
@@ -1011,6 +1022,7 @@ SDD の価値の源泉は規律であってツールではないため、「Mark
 - [Releases](https://github.com/github/spec-kit/releases) — 破壊的変更の確認はここで
 - [Kiro 公式サイト](https://kiro.dev/) / [Kiro Specs ドキュメント](https://kiro.dev/docs/specs/) — Kiro の仕様ワークフローの一次情報
 - [Claude Code 公式ドキュメント](https://code.claude.com/docs/) — §13 の一次情報（Tools Reference / Subagents / Memory / Checkpointing / Permissions 等）
+- [AWS: AI-Driven Development Life Cycle](https://aws.amazon.com/blogs/devops/ai-driven-development-life-cycle/) / [awslabs/aidlc-workflows](https://github.com/awslabs/aidlc-workflows) — AI-DLC の提唱記事と OSS 実装（§8.5）
 
 ### 解説・分析
 
