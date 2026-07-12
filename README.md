@@ -1142,6 +1142,27 @@ SDD の価値の源泉は規律であってツールではないため、「Mark
 
 どの路線でも共通なのは、Description と Discernment が深まり続けること、そして**エキスパートの定義が「正当性の判断を担える範囲の広さ」になる**ことです（§7.6）。コードの正しさは機械が検証できるようになっていく——「これは作るべきものか」「この構造は事業に耐えるか」を判断できる範囲こそが、シニアリティの実体になります。
 
+**補足: クラウド（AWS / Azure）スキルの段階詳細**
+
+Stage 2 で1行に圧縮したクラウドを、AWS / Azure の対応付きで段階展開します。方針は「**主戦場を1つ深く、もう1つは対応表で読める**」——概念は共通なので、1つ深く学べば2つ目はサービス名の翻訳で済みます。
+
+| 段階 | 必須スキル | AWS | Azure |
+|---|---|---|---|
+| Stage 0〜1 | **IAM の基本**（ユーザー / ロール / ポリシー、最小権限の感覚） | IAM | Entra ID + RBAC |
+| | コンピュートとストレージの基本形、サーバーレスの入口 | EC2 / S3 / Lambda | VM / Blob / Functions |
+| | 課金モデルを読む（何にいくら掛かっているか） | Cost Explorer | Cost Management |
+| Stage 2 | ネットワーク設計（サブネット、境界、プライベート接続） | VPC / Security Group | VNet / NSG |
+| | マネージドの定番（RDB / NoSQL / キュー・イベント） | RDS / DynamoDB / SQS・EventBridge | Azure SQL / Cosmos DB / Service Bus・Event Grid |
+| | コンテナ実行基盤 | ECS / EKS | Container Apps / AKS |
+| | IaC と可観測性 | Terraform・CDK / CloudWatch | Terraform・Bicep / Azure Monitor |
+| Stage 3 | マルチアカウント・ガバナンス（ランディングゾーン、組織ポリシー、鍵管理、監査） | Organizations / Control Tower / SCP / KMS | Management Groups / Landing Zone / Azure Policy / Key Vault |
+| | コスト最適化（FinOps）、大規模設計 | — | — |
+| | **AI エージェント基盤**（マネージドなモデル・エージェント実行環境） | Bedrock（+ Kiro 連携） | Azure AI Foundry |
+
+資格は地図としては有効です（AWS: CLF→SAA→SAP・DevOps Pro、Azure: AZ-900→AZ-104 / AZ-204→AZ-305）。ただし採用・評価の実体は「**自分のサービス構成を、コストと障害モードを含めて説明できるか**」であり、資格はその学習の足場と割り切るのが健全です。
+
+AI 時代の観点では、クラウドスキルの意味が3つ変わります。①**IAM 設計は「エージェントの権限設計」になる**——人間より速く大量に操作するエージェントにこそ最小権限が効く（§13.3 の Permission の議論のインフラ版）。②**IaC が前提になる**——インフラ変更もエージェントが書く時代には、レビュー可能・再現可能な IaC でなければ §12 の検証ループに乗らない。③**「読める」ことが検証の前提**——エージェントが提案した構成の妥当性（コスト・セキュリティ・障害時挙動）を判断するのは人間であり、これはクラウド版の Discernment です。
+
 ## 19. まとめと社内での始め方
 
 - SDD は「プロンプトの使い捨て」をやめ、意図をレビュー可能・永続的な成果物に昇格させる方法論。Spec-kit はその GitHub 製リファレンス実装
