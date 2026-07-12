@@ -1159,7 +1159,24 @@ Stage 2 で1行に圧縮したクラウドを、AWS / Azure の対応付きで�
 | | コスト最適化（FinOps）、大規模設計 | — | — |
 | | **AI エージェント基盤**（マネージドなモデル・エージェント実行環境） | Bedrock（+ Kiro 連携） | Azure AI Foundry |
 
-資格は地図としては有効です（AWS: CLF→SAA→SAP・DevOps Pro、Azure: AZ-900→AZ-104 / AZ-204→AZ-305）。ただし採用・評価の実体は「**自分のサービス構成を、コストと障害モードを含めて説明できるか**」であり、資格はその学習の足場と割り切るのが健全です。
+資格は学習の地図として有効です。AWS と Azure で近い領域をカバーする資格を対応表にすると次の通りです（2026年7月時点。**両陣営とも改廃が速い**——AWS は SysOps→CloudOps 改名〔2025年9月〕・ML Specialty 退役〔2026年3月〕、Azure は AZ-204 退役予定〔2026年7月〕——ため、受験前に必ず公式の現行一覧を確認）。
+
+| 領域 | AWS | Azure | 備考 |
+|---|---|---|---|
+| クラウド入門 | Cloud Practitioner（CLF-C02） | AZ-900 | どちらも非エンジニア含む共通言語づくりに有効 |
+| AI 基礎 | AI Practitioner（AIF-C01） | AI-900 | Stage 0 の AI 協働リテラシーの資格版 |
+| データ / セキュリティ基礎 | —（基礎級なし） | DP-900 / SC-900 | Azure のほうが基礎級が細かい |
+| 運用・管理 | CloudOps Engineer Associate（SOA-C03、旧 SysOps） | AZ-104（Administrator） | **最も 1:1 に近い対応**。Stage 1〜2 の運用スキルに相当 |
+| 開発者 | Developer Associate（DVA-C02） | AZ-204 ※退役予定 | Azure は以後 AZ-104 経由が標準路線に |
+| アーキテクト（入口） | Solutions Architect Associate（SAA-C03） | — | 出題の重心は「サービスの選定」で、AZ-104（構成方法）と AZ-305（設計）の中間に位置する |
+| アーキテクト（上位） | Solutions Architect Professional（SAP-C02） | AZ-305（Expert） | 市場評価はほぼ同格。Stage 3 アーキテクト路線 |
+| DevOps | DevOps Engineer Professional（DOP-C02） | AZ-400（Expert） | Stage 3 プラットフォーム路線 |
+| セキュリティ | Security Specialty（SCS-C02） | AZ-500 | |
+| ネットワーク | Advanced Networking Specialty（ANS-C01） | AZ-700 | |
+| データエンジニア | Data Engineer Associate（DEA-C01） | DP-700（Fabric Data Engineer） | 旧 DP-203 は退役済み |
+| ML / AI エンジニア | ML Engineer Associate（MLA-C01） | AI-102（AI Engineer）/ DP-100（Data Scientist） | Stage 3 AI エンジニア路線 |
+
+注意点は2つ。第一に、この対応は「**役割の近さ**」であってレベル体系は非対称です（AWS は Foundational→Associate→Professional→Specialty の4層、Azure は Fundamentals→Associate→Expert の3層。例: AZ-104 は AWS 側では SAA でなく CloudOps に近い）。第二に、採用・評価の実体は資格ではなく「**自分のサービス構成を、コストと障害モードを含めて説明できるか**」であり、資格はその学習の足場と割り切るのが健全です。
 
 AI 時代の観点では、クラウドスキルの意味が3つ変わります。①**IAM 設計は「エージェントの権限設計」になる**——人間より速く大量に操作するエージェントにこそ最小権限が効く（§13.3 の Permission の議論のインフラ版）。②**IaC が前提になる**——インフラ変更もエージェントが書く時代には、レビュー可能・再現可能な IaC でなければ §12 の検証ループに乗らない。③**「読める」ことが検証の前提**——エージェントが提案した構成の妥当性（コスト・セキュリティ・障害時挙動）を判断するのは人間であり、これはクラウド版の Discernment です。
 
